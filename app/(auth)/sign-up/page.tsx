@@ -16,12 +16,8 @@ import { z } from "zod"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
+import { formSchema } from '@/lib/auth-schema'
 
-const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  email: z.string().min(2).max(50),
-  password: z.string().min(2).max(50),
-})
 
 const SignUp= () => {
   // 1. Define your form.
@@ -38,7 +34,7 @@ const SignUp= () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    //console.log(values)
   }
   return (
     <div>
@@ -101,7 +97,7 @@ const SignUp= () => {
                     
                   )} 
                   />
-                  <Button type='submit'>Sign Up</Button>
+                  <Button type='submit' className='w-full'>Sign Up</Button>
               </form>
             </Form>
         </CardContent>

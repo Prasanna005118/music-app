@@ -16,16 +16,13 @@ import { z } from "zod"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
+import { sigInFormSchema } from '@/lib/auth-schema'
 
-const formSchema = z.object({
-  email: z.string().min(2).max(50),
-  password: z.string().min(2).max(50),
-})
 
 const SignIn = () => {
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof sigInFormSchema>>({
+    resolver: zodResolver(sigInFormSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -33,10 +30,10 @@ const SignIn = () => {
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof sigInFormSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    //console.log(values)
   }
   return (
     <div>
@@ -82,7 +79,7 @@ const SignIn = () => {
                     
                   )} 
                   />
-                  <Button type='submit'>Sign In</Button>
+                  <Button type='submit' className='w-full'>Sign In</Button>
               </form>
             </Form>
         </CardContent>
